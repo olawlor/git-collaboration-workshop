@@ -21,12 +21,13 @@ def is_edge(x, y, dims):
     return False
 
 
-def print_box(width, height):
+def print_box(width, height, fillchar):
     """Print the outline of a box
 
     Args:
       width (int): The width of the box
       height (int): The height of the box
+      fillchar (char): The interior character
     """
     out = ""
     for y in range(height):
@@ -34,7 +35,7 @@ def print_box(width, height):
             if is_edge(x, y, (width, height)):
                 out += "*"
             else:
-                out += " "
+                out += fillchar
 
         out += "\n"
 
@@ -51,11 +52,14 @@ def main():
             height = int(input("Enter the height of the box (0 to exit):"))
             if height == 0:
                 break
+            fillchar = int(input("Enter the ASCII code for the interior fill char (0 to exit):"))
+            if fillchar == 0:
+                break
 
         except ValueError:
             print("Please enter an integer value")
 
-        print_box(width, height)
+        print_box(width, height, chr(fillchar))
 
 
 if __name__ == "__main__":
