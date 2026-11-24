@@ -4,7 +4,7 @@ expected_3_3 = "***\n* *\n***\n"
 
 
 def test_one_input(monkeypatch, capsys):
-    inputs = iter(["3", "3", "0"])
+    inputs = iter(["3", "3", "32", "0"])
     monkeypatch.setattr("builtins.input", lambda _: next(inputs))
     main()
     stdout = capsys.readouterr()
@@ -13,7 +13,7 @@ def test_one_input(monkeypatch, capsys):
 
 
 def test_one_input_late_exit(monkeypatch, capsys):
-    inputs = iter(["3", "3", "2", "0"])
+    inputs = iter(["3", "3", "32", "0"])
     monkeypatch.setattr("builtins.input", lambda _: next(inputs))
 
     main()
